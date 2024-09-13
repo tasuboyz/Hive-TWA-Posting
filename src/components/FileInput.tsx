@@ -15,7 +15,7 @@ const FileInput: React.FC<FileInputProps> = ({ onChange }) => {
   return (
     <div className="file-input-container">
       <button type="button" onClick={handleClick} className="custom-file-button">
-        Carica File
+        Load Image 🖼
       </button>
       <input
         type="file"

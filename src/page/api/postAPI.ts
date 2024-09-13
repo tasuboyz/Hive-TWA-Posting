@@ -96,7 +96,7 @@ export const postAPI = {
   },
 
   uploadImage: async (upload: Upload): Promise<ApiResponse<string>> => {
-    return UploadCall('http://imridd.eu.pythonanywhere.com/api/hive/upload_base64_image', 'POST', upload);
+    return UploadCall('https://imridd.eu.pythonanywhere.com/api/hive/upload_base64_image', 'POST', upload);
   },
 
   login: async (login: Login): Promise<ApiResponse<string>> => {

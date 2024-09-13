@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-around;
+  /* align-items: flex-end; */
+  /* height: 100vh; */
+  /* width: 60vw; */
+  /* padding: 5px; */
+  /* box-sizing: border-box; */
+  overflow: hidden;
+  flex-wrap: wrap;
+  /* align-content: center; */
+  /* margin: 0 auto;  */
+}

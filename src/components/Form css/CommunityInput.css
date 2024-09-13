@@ -1,0 +1,31 @@
+.community-input-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .community-search {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .community-list {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .community-item {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .community-item.selected {
+    background-color: #f0f0f0;
+  }
+  

@@ -21,7 +21,7 @@ interface Upload {
 function PostPage() {
   const [titolo, setTitolo] = React.useState('');
   const [description, setDescription] = React.useState('');
-  const [tag, setTag] = React.useState('inleo');
+  const [tag, setTag] = React.useState('hive');
   const [dateTime, setDateTime] = React.useState('');
   const [communityId, setCommunityId] = React.useState<string | null>(null);
   const [communityName, setCommunityName] = React.useState<string | null>(null);

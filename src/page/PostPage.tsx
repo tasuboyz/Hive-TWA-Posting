@@ -211,7 +211,7 @@ const handleSubmit = async (data: { image_url: string }) => {
         onChange={(e) => setDateTime(e.target.value)} 
       />
       <FileInput onChange={handleFileChange} />
-      <LogoffButton />
+      <div><LogoffButton /></div>
       {/* Bottone di invio post */}
       <button className="button" onClick={inviaMessaggio}>Send Post</button>
     </div>

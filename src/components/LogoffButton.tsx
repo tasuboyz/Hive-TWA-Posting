@@ -1,5 +1,3 @@
-import React from 'react';
-
 const LogoffButton = () => {
     const handleLogoff = () => {
       const logoff = {

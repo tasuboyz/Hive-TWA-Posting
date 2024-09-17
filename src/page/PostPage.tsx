@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import './PostPage.css'
 import FileInput from '../components/FileInput';
 import { postAPI } from './api/postAPI';
+import LogoffButton from '../components/LogoffButton'
 
 declare global {
   interface Window {
@@ -210,6 +211,7 @@ const handleSubmit = async (data: { image_url: string }) => {
         onChange={(e) => setDateTime(e.target.value)} 
       />
       <FileInput onChange={handleFileChange} />
+      <LogoffButton />
       {/* Bottone di invio post */}
       <button className="button" onClick={inviaMessaggio}>Send Post</button>
     </div>

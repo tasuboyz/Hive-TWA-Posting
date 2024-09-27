@@ -132,21 +132,15 @@ const handleSubmit = async (data: { image_url: string }) => {
   try 
   {
     setIsLoading(true);
-    const response = await postAPI.uploadImage(upload);
+    const response = await postAPI.UploadImage(upload);
     if (response.error) {
       alert(response.error);
       throw new Error(response.error);
     }
-    const responseData = response.data;
-    const responseString = JSON.stringify(responseData);  
-    const urlPattern = /(https?:\/\/[^\s]+)/g;
-    const urls = responseString.match(urlPattern);
-    if (urls && urls.length > 0) {
-      let url = urls[0];
-      url = url.replace(/["}]+$/, '');
-      const png_url = `${url}.png`;   
-      setDescription(prevDescription => prevDescription + '\n' + png_url);
-    }
+    const image_url = response.data.image_url; 
+    alert(image_url)
+    const markdownImage = `![Image](${image_url})`;
+    setDescription(prevDescription => prevDescription + '\n' + markdownImage);
   } 
   catch (error) {
     console.error('Errore durante l\'invio dell\'immagine:', error);

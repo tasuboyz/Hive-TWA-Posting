@@ -138,7 +138,6 @@ const handleSubmit = async (data: { image_url: string }) => {
       throw new Error(response.error);
     }
     const image_url = response.data.image_url; 
-    alert(image_url)
     const markdownImage = `![Image](${image_url})`;
     setDescription(prevDescription => prevDescription + '\n' + markdownImage);
   } 

@@ -25,6 +25,10 @@ interface ApiResponse<T> {
   error?: string;
 }
 
+interface ImageData {
+  image_url: string;
+}
+
 async function apiCall<T>(endpoint: string, method: string, data?: string): Promise<ApiResponse<T>> {
   // const URL = await fetchAssetsUrl();
   const headers = {
@@ -56,15 +60,15 @@ async function apiCall<T>(endpoint: string, method: string, data?: string): Prom
   }
 }
 
-async function UploadCall<T>(endpoint: string, method: string, data?: Upload): Promise<ApiResponse<T>> {
+async function UploadCall<T extends ImageData>(endpoint: string, method: string, data?: Upload): Promise<ApiResponse<T>> {
   const headers = {
-    "accept": "application/json",
-    "authorization": "Bearer my-secret",
+    "Accept": "application/json",
+    "Authorization": "Bearer my-secret",
     "Content-Type": "application/json"
   };
 
   try {
-    const response = await fetch(`${endpoint}`, {
+    const response = await fetch(endpoint, {
       method,
       headers,
       body: data ? JSON.stringify(data) : undefined
@@ -95,8 +99,8 @@ export const postAPI = {
     return apiCall('/community', 'POST', JSON.stringify({ community: communityname }));
   },
 
-  uploadImage: async (upload: Upload): Promise<ApiResponse<string>> => {
-    return UploadCall('https://imridd.eu.pythonanywhere.com/api/hive/upload_base64_image', 'POST', upload);
+  UploadImage: async (upload: Upload): Promise<ApiResponse<ImageData>> => {
+    return UploadCall<ImageData>('https://imridd.eu.pythonanywhere.com/api/hive/upload_base64_image', 'POST', upload);
   },
 
   login: async (login: Login): Promise<ApiResponse<string>> => {

@@ -79,7 +79,7 @@ function PostingPage() {
   // };
 
   const handleCommunitySelect = (selectedName: string, selectedId: string) => {
-    if (selectedName === "Nessuna community") {
+    if (selectedName === "No community") {
         selectedId = "None";
     }
     setCommunity(selectedName);

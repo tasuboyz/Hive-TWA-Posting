@@ -79,9 +79,6 @@ function PostingPage() {
   // };
 
   const handleCommunitySelect = (selectedName: string, selectedId: string) => {
-    if (selectedName === "No community") {
-        selectedId = "None";
-    }
     setCommunity(selectedName);
     localStorage.setItem('hive_selectedCommunityId', selectedId);
     localStorage.setItem('hive_selectedCommunityName', selectedName);
@@ -104,7 +101,7 @@ function PostingPage() {
         />
         <Box id="list" sx={{ height: '400px', overflowY: 'scroll', marginTop: 2, width: '100%'}}>
             <List>
-              <ListItem>
+              <ListItem onClick={() => handleCommunitySelect("No community", "None")}>
                 <ListItemText primary="No community" />
               </ListItem>
               {communityNames.map((item, index) => {

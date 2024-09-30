@@ -100,22 +100,24 @@ function PostingPage() {
           className="community-search"
         />
         <Box id="list" sx={{ height: '400px', overflowY: 'scroll', marginTop: 2, width: '100%'}}>
-          <List>
-            {communityNames.length === 0 ? (
-              <ListItem>
-                <ListItemText primary="No community" />
-              </ListItem>
-              ) : (
-              communityNames.map((item, index) => {
+            <List>
+              {communityNames.length === 0 && (
+                <ListItem>
+                  <ListItemText primary="Nessuna community" />
+                </ListItem>
+              )}
+              {communityNames.map((item, index) => {
                 const [id, name] = item.split(',');
                 return (
                   <ListItem key={index} onClick={() => handleCommunitySelect(name, id)}>
                     <ListItemText primary={name} />
                   </ListItem>
                 );
-              })
-            )}
-        </List>
+              })}
+              <ListItem>
+                <ListItemText primary="Nessuna community" />
+              </ListItem>
+          </List>
         </Box>
       </Box>
     </Container>

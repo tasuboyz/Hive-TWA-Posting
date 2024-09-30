@@ -101,11 +101,9 @@ function PostingPage() {
         />
         <Box id="list" sx={{ height: '400px', overflowY: 'scroll', marginTop: 2, width: '100%'}}>
             <List>
-              {communityNames.length === 0 && (
-                <ListItem>
-                  <ListItemText primary="Nessuna community" />
-                </ListItem>
-              )}
+              <ListItem>
+                <ListItemText primary="Nessuna community" />
+              </ListItem>
               {communityNames.map((item, index) => {
                 const [id, name] = item.split(',');
                 return (
@@ -113,10 +111,7 @@ function PostingPage() {
                     <ListItemText primary={name} />
                   </ListItem>
                 );
-              })}
-              <ListItem>
-                <ListItemText primary="Nessuna community" />
-              </ListItem>
+              })}           
           </List>
         </Box>
       </Box>

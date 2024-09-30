@@ -79,6 +79,9 @@ function PostingPage() {
   // };
 
   const handleCommunitySelect = (selectedName: string, selectedId: string) => {
+    if (selectedName === "Nessuna community") {
+        selectedId = "None";
+    }
     setCommunity(selectedName);
     localStorage.setItem('hive_selectedCommunityId', selectedId);
     localStorage.setItem('hive_selectedCommunityName', selectedName);

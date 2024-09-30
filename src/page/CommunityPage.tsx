@@ -79,6 +79,7 @@ function PostingPage() {
   // };
 
   const handleCommunitySelect = (selectedName: string, selectedId: string) => {
+    console.log(`Selected community: ${name}, ID: ${id}`);
     setCommunity(selectedName);
     localStorage.setItem('hive_selectedCommunityId', selectedId);
     localStorage.setItem('hive_selectedCommunityName', selectedName);

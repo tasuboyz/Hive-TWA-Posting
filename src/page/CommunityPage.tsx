@@ -102,7 +102,7 @@ function PostingPage() {
         <Box id="list" sx={{ height: '400px', overflowY: 'scroll', marginTop: 2, width: '100%'}}>
             <List>
               <ListItem>
-                <ListItemText primary="Nessuna community" />
+                <ListItemText primary="No community" />
               </ListItem>
               {communityNames.map((item, index) => {
                 const [id, name] = item.split(',');

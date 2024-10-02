@@ -36,17 +36,29 @@ function PostPage() {
     const savedCommunityName = localStorage.getItem('hive_selectedCommunityName');
     
     const urlParams = new URLSearchParams(window.location.search);
-    //const username = urlParams.get('username');
-    //const wif = urlParams.get('wif');
+    const username = urlParams.get('username');
+    const wif = urlParams.get('wif');
 
-    sessionStorage.setItem('username', urlParams.get('username'));
-    sessionStorage.setItem('wif', urlParams.get('wif'));
+    if (username) {
+      sessionStorage.setItem('username', username);
+      setUsername(username);
+    }
 
-    const username = sessionStorage.getItem('username');
-    const wif = sessionStorage.getItem('wif');
+    if (wif) {
+      sessionStorage.setItem('wif', wif);
+      setWif(wif);
+    }
 
-    setWif(wif)
-    setUsername(username)
+    const savedUsername = sessionStorage.getItem('username');
+    const savedWif = sessionStorage.getItem('wif');
+
+    if (savedUsername) {
+      setUsername(savedUsername);
+    }
+
+    if (savedWif) {
+      setWif(savedWif);
+    }
 
     if (savedCommunityId) {
       setCommunityId(savedCommunityId);

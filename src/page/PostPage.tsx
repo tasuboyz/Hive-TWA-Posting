@@ -38,6 +38,13 @@ function PostPage() {
     const urlParams = new URLSearchParams(window.location.search);
     const username = urlParams.get('username');
     const wif = urlParams.get('wif');
+
+    sessionStorage.setItem('username', urlParams.get('username'));
+    sessionStorage.setItem('wif', urlParams.get('wif'));
+
+    const username = sessionStorage.getItem('username');
+    const wif = sessionStorage.getItem('wif');
+
     setWif(wif)
     setUsername(username)
 

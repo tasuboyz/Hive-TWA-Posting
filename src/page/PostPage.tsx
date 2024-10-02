@@ -168,67 +168,78 @@ const handleSubmit = async (data: { image_url: string }) => {
   }
 };
 
-  return (
-    <>
-      <div className="container">
-      {isLoading && (
-          <div className="loading-overlay">
-            <div className="loading-spinner"></div>
-            <p>Loading...</p>
-          </div>
-        )}
-      <CommunityButton onClick={handleButtonClick} communityName={communityName || ''} />
-      {/* Casella di input per il titolo */}
-      <input
-        type="text"
-        placeholder="Title"
-        className="input-title"
-        value={titolo}
-        onChange={(e) => setTitolo(e.target.value)}
-      />
-      {/* Casella di input per la descrizione */}
-      <textarea
-        placeholder="body of post"
-        className="input-description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        // onFocus={() => setShowFormatOptions(true)}
-        // onBlur={() => setShowFormatOptions(false)}
-        maxLength={15000}
-      />
-      {/* {showFormatOptions && (
-          <div className="format-options">
-            <button onClick={() => formatSelectedText('bold')}>Bold</button>
-            <button onClick={() => formatSelectedText('italic')}>Italic</button>
-            <button onClick={() => formatSelectedText('code')}>Code</button>
-          </div>
-      )} */}
-      {/* Casella di input per i tag */}
-      <input
-        type="text"
-        placeholder="Tag exaple: steem steemit steemexclusive"
-        className="input-tag"
-        value={tag}
-        onChange={(e) => {
-          const inputWords = e.target.value.split(' ');
-          if (inputWords.length <= 7) {
-            setTag(e.target.value);
-          }
-        }}
-      />
-      <input 
-        type="datetime-local" 
-        className="input-datetime" 
-        value={dateTime} 
-        onChange={(e) => setDateTime(e.target.value)} 
-      />
-      <FileInput onChange={handleFileChange} />
-      <div><LogoffButton /></div>
-      {/* Bottone di invio post */}
-      <button className="button" onClick={inviaMessaggio}>Send Post</button>
-    </div>
-    </>
-  )
+return (
+  <div className="page-container">
+    {isLoading && (
+      <div className="loading-overlay">
+        <div className="loading-spinner"></div>
+        <p>Loading...</p>
+      </div>
+    )}
+    <form className="form-container" onSubmit={(e) => e.preventDefault()}>
+      <div className="input-container">
+        <CommunityButton onClick={handleButtonClick} communityName={communityName || ''} />
+      </div>
+      <div className="input-container">
+        <label htmlFor="title" className="input-label">Title</label>
+        <input
+          id="title"
+          type="text"
+          placeholder="Enter title"
+          className="input-title"
+          value={titolo}
+          onChange={(e) => setTitolo(e.target.value)}
+        />
+      </div>
+      <div className="input-container">
+        <label htmlFor="description" className="input-label">Body</label>
+        <textarea
+          id="description"
+          placeholder="Enter post body"
+          className="input-description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          maxLength={15000}
+        />
+      </div>
+      <div className="input-container">
+        <label htmlFor="tags" className="input-label">Tags</label>
+        <input
+          id="tags"
+          type="text"
+          placeholder="Enter tags (e.g., steem steemit steemexclusive)"
+          className="input-tag"
+          value={tag}
+          onChange={(e) => {
+            const inputWords = e.target.value.split(' ');
+            if (inputWords.length <= 7) {
+              setTag(e.target.value);
+            }
+          }}
+        />
+      </div>
+      <div className="input-container">
+        <label htmlFor="datetime" className="input-label">Date and Time</label>
+        <input 
+          id="datetime"
+          type="datetime-local" 
+          className="input-datetime" 
+          value={dateTime} 
+          onChange={(e) => setDateTime(e.target.value)} 
+        />
+      </div>
+      <div className="input-container">
+        <FileInput onChange={handleFileChange} />
+      </div>
+      <div className="button-logoff-container">
+        <LogoffButton />
+      </div>
+      <div className="posting-button-container">        
+        <button className="posting-button" onClick={inviaMessaggio}>Send Post</button>
+      </div>
+    </form>
+  </div>
+);
 }
 
 export default PostPage

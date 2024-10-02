@@ -1,17 +1,23 @@
+.file-input-container {
+  display: flex;
+  justify-content: center; /* Centrato orizzontalmente */
+  align-items: center;
+  margin-top: 20px;
+}
+
 .hidden-file-input {
-    display: none;
-  }
-  
-  .custom-file-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  .custom-file-button:hover {
-    background-color: #45a049;
-  }
-  
+  display: none;
+}
+
+.custom-file-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.custom-file-button:hover {
+  background-color: #45a049;
+}

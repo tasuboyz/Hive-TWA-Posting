@@ -8,7 +8,7 @@ interface CommunityButtonProps {
 
 export const CommunityButton: React.FC<CommunityButtonProps> = ({ onClick, communityName }) => {
   return (
-    <div>
+    <div className="community-button-container">
       <button onClick={onClick} className="community-button">
         {communityName || 'Search Community 🔎'}
       </button>

@@ -36,8 +36,8 @@ function PostPage() {
     const savedCommunityName = localStorage.getItem('hive_selectedCommunityName');
     
     const urlParams = new URLSearchParams(window.location.search);
-    const username = urlParams.get('username');
-    const wif = urlParams.get('wif');
+    //const username = urlParams.get('username');
+    //const wif = urlParams.get('wif');
 
     sessionStorage.setItem('username', urlParams.get('username'));
     sessionStorage.setItem('wif', urlParams.get('wif'));

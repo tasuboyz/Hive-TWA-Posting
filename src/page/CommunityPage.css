@@ -1,63 +1,91 @@
 .container-community {
   display: flex;
-  justify-content: space-around;
-  background-color: #424242;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #1e1e1e;  /* Sfondo più scuro per un maggiore contrasto */
   overflow: hidden;
-  flex-wrap: wrap;
 }
 
-/* Stile per l'input di ricerca della comunità */
+.search-container {
+  padding: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #1e1e1e;
+}
+
 .community-search input {
-  color: #ffffff; /* Colore del testo bianco */
-  background-color: #202024; /* Sfondo blu più chiaro */
-  border-radius: 8px; /* Angoli arrotondati */
-  padding: 10px; /* Spaziatura interna */
-  border: 2px solid #3b5998; /* Bordo iniziale */
-  transition: border-color 0.3s ease; /* Transizione morbida */
+  color: #ffffff;
+  background-color: #2c2c2c;  /* Sfondo dell'input leggermente più chiaro */
+  border-radius: 8px;
+  padding: 10px;
+  border: 2px solid #4a90e2;  /* Bordo blu più luminoso */
+  transition: border-color 0.3s ease;
 }
 
 .community-search .MuiInputBase-root {
-  color: white; /* Colore del testo interno dell'input */
+  color: white;
 }
 
 .community-search .MuiOutlinedInput-root fieldset {
-  border-color: transparent; /* Bordo trasparente */
+  border-color: transparent;
 }
 
 .community-search .MuiOutlinedInput-root:hover fieldset {
-  border-color: #4a90e2; /* Colore del bordo quando è hoverato */
+  border-color: #64b5f6;  /* Colore di hover più luminoso */
 }
 
 .community-search .MuiOutlinedInput-root.Mui-focused fieldset {
-  border-color: #1a73e8; /* Colore del bordo quando è focalizzato */
+  border-color: #2196f3;  /* Colore di focus più luminoso */
 }
 
 .community-search .MuiInputLabel-root {
-  color: #d8cfcf; /* Change to a darker color for better contrast */
-  font-weight: bold; /* Make the text bold */
-  font-size: 1.2em; /* Increase the font size */
+  color: #f0f0f0;  /* Etichetta più chiara per un migliore contrasto */
+  font-weight: bold;
+  font-size: 1.2em;
 }
 
-/* Stile per la lista delle comunità */
+.list-container {
+  flex-grow: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 #list {
-  background-color: #424242;
-  border-radius: 8px; /* Angoli arrotondati */
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Ombra più pronunciata */
+  background-color: #2c2c2c;  /* Sfondo della lista leggermente più chiaro */
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);  /* Ombra più pronunciata */
 }
 
-/* Stile per gli elementi della lista */
 .MuiListItem-root {
-  padding: 12px 20px; /* Spaziatura interna maggiore */
-  border-bottom: 1px solid #1f9829;
-  transition: background-color 0.3s ease; /* Transizione morbida */
+  padding: 16px 20px;
+  border-bottom: 1px solid #4caf50;  /* Bordo verde più luminoso */
+  transition: background-color 0.3s ease;
 }
 
 .MuiListItem-root:hover {
-  background-color: #3b3b3b; /* Colore di sfondo quando è hoverato */
+  background-color: #3f3f3f;  /* Colore di hover più chiaro */
 }
 
-/* Stile per il testo della lista */
 .MuiListItemText-primary {
   font-weight: 500;
-  color: #e0e0e0; /* Colore del testo più chiaro */
+  color: #ffffff;  /* Testo bianco per un contrasto massimo */
+}
+
+/* Miglioramento dell'aspetto della barra di scorrimento */
+.list-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.list-container::-webkit-scrollbar-track {
+  background: #1e1e1e;
+}
+
+.list-container::-webkit-scrollbar-thumb {
+  background-color: #4a90e2;  /* Colore della barra di scorrimento che si abbina al tema */
+  border-radius: 5px;
+}
+
+.list-container::-webkit-scrollbar-thumb:hover {
+  background-color: #64b5f6;  /* Colore di hover più chiaro */
 }

@@ -203,24 +203,23 @@ const handleSelectOption = (option: string) => {
         )}
       <CommunityButton onClick={handleButtonClick} communityName={communityName || ''} />
       {/* Casella di input per il titolo */}
-      <div onMouseUp={handleMouseUp} style={{ width: '100%' }}>
-        <textarea
-          placeholder="body of post"
-          className="input-description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          onMouseUp={handleMouseUp}
-          maxLength={15000}
-          //style={{ width: '100%' }} // Assicura che l'input si allarghi al 100%
+      <textarea
+        placeholder="body of post"
+        className="input-description"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+        onMouseUp={handleMouseUp}
+        maxLength={15000}
+        style={{ width: 'calc(100% - 20px)' }}
+        //style={{ width: '100%' }} // Assicura che l'input si allarghi al 100%
+      />
+      {contextMenuVisible && (
+        <ContextMenu
+          options={['Copia', 'Taglia', 'Incolla']}
+          onSelect={handleSelectOption}
+          position={contextMenuPosition}
         />
-        {contextMenuVisible && (
-          <ContextMenu
-            options={['Copia', 'Taglia', 'Incolla']}
-            onSelect={handleSelectOption}
-            position={contextMenuPosition}
-          />
-        )}
-      </div>
+      )}
       {/* Casella di input per i tag */}
       <input
         type="text"

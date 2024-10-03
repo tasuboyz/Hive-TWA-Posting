@@ -188,7 +188,42 @@ const handleMouseUp = (event: React.MouseEvent) => {
 };
 
 const handleSelectOption = (option: string) => {
-  console.log(`Selected option: ${option} for text: ${selectedText}`);
+  if (selectedText) { // Controlla che selectedText non sia null
+    let formattedText;
+    switch (option) {
+      case "Bold":
+        formattedText = `**${selectedText}**`;
+        break;
+      case "Italic":
+        formattedText = `*${selectedText}*`;
+        break;
+      case "Underline":
+        formattedText = `<u>${selectedText}</u>`;
+        break;
+      case "Strikethrough":
+        formattedText = `~~${selectedText}~~`;
+        break;
+      case "Quote":
+        formattedText = `> ${selectedText}`;
+        break;
+      case "Script":
+        formattedText = `\`\`\`\n${selectedText}\n\`\`\``;
+        break;
+      case "Table":
+        formattedText = `|column1|column2|column3|\n|-|-|-|\n|${selectedText}|content2|content3|`;
+        break;
+      case "Spoiler":
+        formattedText = `>! [Hidden Spoiler Text] ${selectedText}\n> Optionally with more lines`;
+        break;
+      default:
+        console.log(`Selected option: ${option} for text: ${selectedText}`);
+        return;
+    }
+    setDescription(prevDescription => prevDescription.replace(selectedText, formattedText));
+  } else {
+    console.log("No text selected");
+  }
+  
   setContextMenuVisible(false);
 };
 
@@ -215,7 +250,7 @@ const handleSelectOption = (option: string) => {
       />
       {contextMenuVisible && (
         <ContextMenu
-          options={['Copia', 'Taglia', 'Incolla']}
+          options={['Bold', 'Italic', 'Underline', 'Quote', 'Script', 'Strikethrough' , 'Table', 'Spoiler' ,'Create link']}
           onSelect={handleSelectOption}
           position={contextMenuPosition}
         />

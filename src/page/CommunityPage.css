@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-color: #1e1e1e;  /* Sfondo più scuro per un maggiore contrasto */
+  background-color: #121212;
   overflow: hidden;
 }
 
@@ -11,15 +11,15 @@
   position: sticky;
   top: 0;
   z-index: 1;
-  background-color: #1e1e1e;
+  background-color: #121212;
 }
 
 .community-search input {
   color: #ffffff;
-  background-color: #2c2c2c;  /* Sfondo dell'input leggermente più chiaro */
+  background-color: #1e1e1e;
   border-radius: 8px;
-  padding: 10px;
-  border: 2px solid #4a90e2;  /* Bordo blu più luminoso */
+  padding: 10px 10px 10px 40px;
+  border: 1px solid #333;
   transition: border-color 0.3s ease;
 }
 
@@ -32,17 +32,25 @@
 }
 
 .community-search .MuiOutlinedInput-root:hover fieldset {
-  border-color: #64b5f6;  /* Colore di hover più luminoso */
+  border-color: #64b5f6;
 }
 
 .community-search .MuiOutlinedInput-root.Mui-focused fieldset {
-  border-color: #2196f3;  /* Colore di focus più luminoso */
+  border-color: #2196f3;
 }
 
 .community-search .MuiInputLabel-root {
-  color: #f0f0f0;  /* Etichetta più chiara per un migliore contrasto */
+  color: #f0f0f0;
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 1.1em;
+}
+
+.search-icon {
+  color: #64b5f6;
+  position: absolute;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .list-container {
@@ -52,40 +60,46 @@
 }
 
 #list {
-  background-color: #2c2c2c;  /* Sfondo della lista leggermente più chiaro */
+  background-color: #1e1e1e;
   border-radius: 8px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);  /* Ombra più pronunciata */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .MuiListItem-root {
   padding: 16px 20px;
-  border-bottom: 1px solid #4caf50;  /* Bordo verde più luminoso */
   transition: background-color 0.3s ease;
 }
 
 .MuiListItem-root:hover {
-  background-color: #3f3f3f;  /* Colore di hover più chiaro */
+  background-color: #2c2c2c;
 }
 
 .MuiListItemText-primary {
   font-weight: 500;
-  color: #ffffff;  /* Testo bianco per un contrasto massimo */
+  color: #ffffff;
 }
 
-/* Miglioramento dell'aspetto della barra di scorrimento */
+.MuiListItemText-secondary {
+  color: #b0b0b0;
+}
+
+.MuiDivider-root {
+  background-color: #333;
+}
+
 .list-container::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 .list-container::-webkit-scrollbar-track {
-  background: #1e1e1e;
+  background: #121212;
 }
 
 .list-container::-webkit-scrollbar-thumb {
-  background-color: #4a90e2;  /* Colore della barra di scorrimento che si abbina al tema */
-  border-radius: 5px;
+  background-color: #333;
+  border-radius: 4px;
 }
 
 .list-container::-webkit-scrollbar-thumb:hover {
-  background-color: #64b5f6;  /* Colore di hover più chiaro */
+  background-color: #444;
 }

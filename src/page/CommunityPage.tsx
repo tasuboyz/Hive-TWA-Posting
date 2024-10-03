@@ -2,7 +2,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import './CommunityPage.css';
 import '../App.css'
 import { Telegram } from "@twa-dev/types";
-import { Box, List, ListItem, ListItemText, TextField, CircularProgress } from '@mui/material';
+import { TextField, List, ListItem, ListItemText, Box, CircularProgress, Typography, Divider } from '@mui/material';
+import { Search as SearchIcon } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 declare global {
@@ -26,7 +27,7 @@ const SearchCommunity = useCallback(async (): Promise<void> => {
   setLoading(true);
   const headers = { "accept": "application/json", "Content-Type": "application/json" };
   try {
-      const response = await fetch(`https://imridd.eu.pythonanywhere.com/api/hive/communities?title=${community}&limit=20`, {
+      const response = await fetch(`https://imridd.eu.pythonanywhere.com/api/hive/communities?title=${community}`, {
           method: 'GET',
           headers: headers,
       });
@@ -86,34 +87,52 @@ const SearchCommunity = useCallback(async (): Promise<void> => {
           fullWidth
           variant="outlined"
           className="community-search"
+          InputProps={{
+            startAdornment: <SearchIcon className="search-icon" />,
+          }}
         />
       </div>
       <div className="list-container">
         <List id="list">
-          <ListItem onClick={() => handleCommunitySelect("No community", "None")}>
-            <ListItemText primary="No community" />
+          <ListItem button onClick={() => handleCommunitySelect("No community", "None")}>
+            <ListItemText 
+              primary="No community" 
+              secondary="Default option"
+            />
           </ListItem>
+          <Divider component="li" />
           {communityNames.map((item, index) => {
-          const [id, name] = item.split(',');
-          if (communityNames.length === index + 1) {
+            const [id, name] = item.split(',');
             return (
-              <ListItem key={index} onClick={() => handleCommunitySelect(name, id)}>
-                <ListItemText primary={name} />
-              </ListItem>
+              <React.Fragment key={index}>
+                <ListItem button onClick={() => handleCommunitySelect(name, id)}>
+                  <ListItemText 
+                    primary={name}
+                    secondary={`Community ID: ${id}`}
+                  />
+                </ListItem>
+                {index < communityNames.length - 1 && <Divider component="li" />}
+              </React.Fragment>
             );
-          } else {
-            return (
-              <ListItem key={index} onClick={() => handleCommunitySelect(name, id)}>
-                <ListItemText primary={name} />
-              </ListItem>
-            );
-          }
-        })}       
+          })}       
         </List>
-        {loading && <Box display="flex" justifyContent="center" my={2}><CircularProgress /></Box>}
+        {loading && (
+          <Box display="flex" flexDirection="column" alignItems="center" my={2}>
+            <CircularProgress />
+            <Typography variant="body2" style={{ marginTop: '8px' }}>
+              Loading communities...
+            </Typography>
+          </Box>
+        )}
+        {!loading && communityNames.length === 0 && (
+          <Box textAlign="center" my={2}>
+            <Typography variant="body1">
+              No communities found. Try a different search term.
+            </Typography>
+          </Box>
+        )}
       </div>
     </div>
   );
 }
-
 export default CommunityPage;

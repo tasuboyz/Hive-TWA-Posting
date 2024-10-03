@@ -32,8 +32,8 @@ function PostPage() {
   const [isLoading, setIsLoading] = React.useState(false);
   const navigate = useNavigate();
   const [contextMenuVisible, setContextMenuVisible] = React.useState(false);
-  const [contextMenuPosition, setContextMenuPosition] = React.useState({ x: 0, y: 0 });
-  const [, setSelectedOption] = React.useState<string | null>(null);
+  const [contextMenuPosition, setContextMenuPosition] = React.useState({ top: 0, left: 0 });
+  const [selectedText, setSelectedText] = React.useState<string | null>(null);
 
   React.useEffect(() => {
     const savedCommunityId = localStorage.getItem('hive_selectedCommunityId');
@@ -176,29 +176,24 @@ const handleSubmit = async (data: { image_url: string }) => {
   }
 };
 
-const handleRightClick = (event: React.MouseEvent) => {
-  event.preventDefault();
-  setContextMenuPosition({ x: event.clientX, y: event.clientY });
-  setContextMenuVisible(true);
+const handleMouseUp = (event: React.MouseEvent) => {
+  const selection = window.getSelection();
+  if (selection && selection.toString().length > 0) {
+      setSelectedText(selection.toString());
+      setContextMenuPosition({ top: event.clientY, left: event.clientX });
+      setContextMenuVisible(true);
+  } else {
+      setContextMenuVisible(false);
+  }
 };
 
 const handleSelectOption = (option: string) => {
-  setSelectedOption(option);
+  console.log(`Selected option: ${option} for text: ${selectedText}`);
   setContextMenuVisible(false);
 };
 
   return (
     <>
-      <div onContextMenu={handleRightClick}>
-        {contextMenuVisible && (
-            <ContextMenu
-                options={['Option 1', 'Option 2', 'Option 3']}
-                onSelect={handleSelectOption}
-                style={{ top: contextMenuPosition.y, left: contextMenuPosition.x }}
-            />
-        )}
-        {/* Rest of your PostPage component */}
-      </div>
       <div className="container">
       {isLoading && (
           <div className="loading-overlay">
@@ -208,23 +203,24 @@ const handleSelectOption = (option: string) => {
         )}
       <CommunityButton onClick={handleButtonClick} communityName={communityName || ''} />
       {/* Casella di input per il titolo */}
-      <input
-        type="text"
-        placeholder="Title"
-        className="input-title"
-        value={titolo}
-        onChange={(e) => setTitolo(e.target.value)}
-      />
-      {/* Casella di input per la descrizione */}
-      <textarea
-        placeholder="body of post"
-        className="input-description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        // onFocus={() => setShowFormatOptions(true)}
-        // onBlur={() => setShowFormatOptions(false)}
-        maxLength={15000}
-      />
+      <div onMouseUp={handleMouseUp} style={{ width: '100%' }}>
+        <textarea
+          placeholder="body of post"
+          className="input-description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          onMouseUp={handleMouseUp}
+          maxLength={15000}
+          //style={{ width: '100%' }} // Assicura che l'input si allarghi al 100%
+        />
+        {contextMenuVisible && (
+          <ContextMenu
+            options={['Copia', 'Taglia', 'Incolla']}
+            onSelect={handleSelectOption}
+            position={contextMenuPosition}
+          />
+        )}
+      </div>
       {/* Casella di input per i tag */}
       <input
         type="text"

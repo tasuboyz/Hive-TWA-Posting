@@ -3,12 +3,21 @@
   color: #f44336; /* Rosso */
   padding: 0;
   border: none;
-  font-size: 1rem;
+  font-size: 1rem; /* Unità relative per dimensioni responsive */
   cursor: pointer;
   text-decoration: underline;
-  transition: color 0.3s;
+  transition: color 0.3s ease, box-shadow 0.3s ease; /* Aggiunta transizione per box-shadow */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Aggiunta ombra */
 }
 
 .button-logoff:hover {
   color: #d32f2f; /* Rosso scuro */
+}
+
+.button-logoff:active {
+  color: #b71c1c; /* Rosso ancora più scuro */
+}
+
+.button-logoff:focus {
+  outline: 2px solid #d32f2f; /* Stile per stato attivo */
 }

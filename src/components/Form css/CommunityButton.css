@@ -9,15 +9,16 @@
   background-color: #4CAF50; /* Verde */
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 1rem 2rem; /* Unità relative per dimensioni responsive */
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 1rem; /* Unità relative per dimensioni responsive */
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 12px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Aggiunta transizione per box-shadow */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Aggiunta ombra */
 }
 
 .community-button:hover {
@@ -28,4 +29,8 @@
 .community-button:active {
   background-color: #3e8e41; /* Verde ancora più scuro */
   transform: scale(0.95);
+}
+
+.community-button:focus {
+  outline: 2px solid #45a049; /* Stile per stato attivo */
 }

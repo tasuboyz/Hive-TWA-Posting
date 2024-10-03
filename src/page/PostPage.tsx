@@ -7,6 +7,7 @@ import './PostPage.css'
 import FileInput from '../components/FileInput';
 import { postAPI } from './api/postAPI';
 import LogoffButton from '../components/LogoffButton'
+import ContextMenu from '../components/ContextMenu';
 
 declare global {
   interface Window {
@@ -30,6 +31,9 @@ function PostPage() {
   const [wif, setWif] = React.useState<string | null>(null);
   const [isLoading, setIsLoading] = React.useState(false);
   const navigate = useNavigate();
+  const [contextMenuVisible, setContextMenuVisible] = React.useState(false);
+  const [contextMenuPosition, setContextMenuPosition] = React.useState({ x: 0, y: 0 });
+  const [, setSelectedOption] = React.useState<string | null>(null);
 
   React.useEffect(() => {
     const savedCommunityId = localStorage.getItem('hive_selectedCommunityId');
@@ -69,6 +73,10 @@ function PostPage() {
   }, []);
 
   const inviaMessaggio = (): void => {
+    //if (!titolo || !description || !tag) {
+    //  setErrorMessage('Tutti i campi sono obbligatori');
+    //  return;
+    //}
     const post = {
         title: titolo,
         description: description,
@@ -168,8 +176,29 @@ const handleSubmit = async (data: { image_url: string }) => {
   }
 };
 
+const handleRightClick = (event: React.MouseEvent) => {
+  event.preventDefault();
+  setContextMenuPosition({ x: event.clientX, y: event.clientY });
+  setContextMenuVisible(true);
+};
+
+const handleSelectOption = (option: string) => {
+  setSelectedOption(option);
+  setContextMenuVisible(false);
+};
+
   return (
     <>
+      <div onContextMenu={handleRightClick}>
+        {contextMenuVisible && (
+            <ContextMenu
+                options={['Option 1', 'Option 2', 'Option 3']}
+                onSelect={handleSelectOption}
+                style={{ top: contextMenuPosition.y, left: contextMenuPosition.x }}
+            />
+        )}
+        {/* Rest of your PostPage component */}
+      </div>
       <div className="container">
       {isLoading && (
           <div className="loading-overlay">
@@ -196,13 +225,6 @@ const handleSubmit = async (data: { image_url: string }) => {
         // onBlur={() => setShowFormatOptions(false)}
         maxLength={15000}
       />
-      {/* {showFormatOptions && (
-          <div className="format-options">
-            <button onClick={() => formatSelectedText('bold')}>Bold</button>
-            <button onClick={() => formatSelectedText('italic')}>Italic</button>
-            <button onClick={() => formatSelectedText('code')}>Code</button>
-          </div>
-      )} */}
       {/* Casella di input per i tag */}
       <input
         type="text"

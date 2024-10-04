@@ -2,7 +2,7 @@
   font-family: 'Inter', sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color-scheme: dark;
+  color-scheme: light dark;
   color: #E1E1E6;
   background-color: #121214;
   font-synthesis: none;
@@ -30,14 +30,35 @@ h1 {
 
 .container {
   display: flex;
+  /* flex-direction: column; */
   justify-content: space-around;
-  flex-wrap: wrap;
+  /* align-items: flex-end; */
+  /* height: 100vh; */
+  /* width: 60vw; */
+  /* padding: 5px; */
+  /* box-sizing: border-box; */
   overflow: hidden;
+  flex-wrap: wrap;
+  /* align-content: center; */
+  /* margin: 0 auto;  */
 }
 
 .input-description {
-  width: 100%;
+  width: 400px;
   height: 350px;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.input-title,
+.input-description,
+.input-tag,
+.input-account,
+.input-password,
+.input-datetime,
+.button {
+  width: 100%;
   padding: 10px;
   margin-bottom: 10px;
   font-size: 16px;
@@ -47,34 +68,41 @@ h1 {
   margin: 10px 0;
 }
 
-.input-title, .input-tag, .input-account, .input-password, .input-datetime, .posting-button {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  font-size: 16px;
-  border: 1px solid #323238;
-  background-color: #202024;
-  color: #E1E1E6;
-}
-
-.posting-button {
+.button,
+button {
   background-color: #8257E5;
   color: white;
   padding: 16px 32px;
   border: none;
   border-radius: 8px;
-  font-size: 1.2rem;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s;
+  transition: background-color 0.3s;
 }
 
-.posting-button:hover {
+.button:hover,
+button:hover {
   background-color: #996DFF;
-  transform: scale(1.05);
 }
 
-button:focus, button:focus-visible {
+button:focus,
+button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #323238;
+    background-color: #FAFAFA;
+  }
+
+  a:hover {
+    color: #8257E5;
+  }
+
+  button {
+    background-color: #E1E1E6;
+  }
 }
 
 .loading-overlay {
@@ -98,13 +126,6 @@ button:focus, button:focus-visible {
   width: 40px;
   height: 40px;
   animation: spin 1s linear infinite;
-}
-
-.button-logoff-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
 }
 
 @keyframes spin {

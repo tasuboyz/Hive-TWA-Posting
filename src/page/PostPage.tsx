@@ -238,6 +238,14 @@ const handleSelectOption = (option: string) => {
         )}
       <CommunityButton onClick={handleButtonClick} communityName={communityName || ''} />
       {/* Casella di input per il titolo */}
+      <input
+        type="text"
+        placeholder="Title"
+        className="input-title"
+        value={titolo}
+        onChange={(e) => setTitolo(e.target.value)}
+      />
+      {/* Casella di input per il titolo */}
       <textarea
         placeholder="body of post"
         className="input-description"

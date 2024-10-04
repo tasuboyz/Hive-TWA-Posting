@@ -227,68 +227,79 @@ const handleSelectOption = (option: string) => {
   setContextMenuVisible(false);
 };
 
-  return (
-    <>
-      <div className="container">
+return (
+  <>
+    <div className="container">
       {isLoading && (
-          <div className="loading-overlay">
-            <div className="loading-spinner"></div>
-            <p>Loading...</p>
-          </div>
-        )}
-      <CommunityButton onClick={handleButtonClick} communityName={communityName || ''} />
-      {/* Casella di input per il titolo */}
-      <input
-        type="text"
-        placeholder="Title"
-        className="input-title"
-        value={titolo}
-        onChange={(e) => setTitolo(e.target.value)}
-      />
-      {/* Casella di input per il titolo */}
-      <textarea
-        placeholder="body of post"
-        className="input-description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        onMouseUp={handleMouseUp}
-        maxLength={15000}
-        style={{ width: 'calc(100% - 20px)' }}
-        //style={{ width: '100%' }} // Assicura che l'input si allarghi al 100%
-      />
+        <div className="loading-overlay">
+          <div className="loading-spinner"></div>
+          <p>Loading...</p>
+        </div>
+      )}
+      <div className="input-container">
+        <CommunityButton onClick={handleButtonClick} communityName={communityName || ''} />
+      </div>
+      <div className="input-container">
+        <input
+          type="text"
+          placeholder="Title"
+          className="input-title"
+          value={titolo}
+          onChange={(e) => setTitolo(e.target.value)}
+        />
+      </div>
+      <div className="input-container">
+        <textarea
+          placeholder="body of post"
+          className="input-description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          onMouseUp={handleMouseUp}
+          maxLength={15000}
+          style={{ width: 'calc(100% - 20px)' }}
+        />
+      </div>
       {contextMenuVisible && (
         <ContextMenu
-          options={['Bold', 'Italic', 'Underline', 'Quote', 'Script', 'Strikethrough' , 'Table', 'Spoiler' ,'Create link']}
+          options={['Bold', 'Italic', 'Underline', 'Quote', 'Script', 'Strikethrough', 'Table', 'Spoiler', 'Create link']}
           onSelect={handleSelectOption}
           position={contextMenuPosition}
         />
       )}
-      {/* Casella di input per i tag */}
-      <input
-        type="text"
-        placeholder="Tag exaple: steem steemit steemexclusive"
-        className="input-tag"
-        value={tag}
-        onChange={(e) => {
-          const inputWords = e.target.value.split(' ');
-          if (inputWords.length <= 7) {
-            setTag(e.target.value);
-          }
-        }}
-      />
-      <input 
-        type="datetime-local" 
-        className="input-datetime" 
-        value={dateTime} 
-        onChange={(e) => setDateTime(e.target.value)} 
-      />
-      <FileInput onChange={handleFileChange} />
-      <div className="button-logoff-container"> <LogoffButton /></div>
-      {/* Bottone di invio post */}
-      <button className="posting-button" onClick={inviaMessaggio}>Send Post</button>
+      <div className="input-container">
+        <input
+          type="text"
+          placeholder="Tag example: steem steemit steemexclusive"
+          className="input-tag"
+          value={tag}
+          onChange={(e) => {
+            const inputWords = e.target.value.split(' ');
+            if (inputWords.length <= 7) {
+              setTag(e.target.value);
+            }
+          }}
+        />
+      </div>
+      <div className="input-container">
+        <input 
+          type="datetime-local" 
+          className="input-datetime" 
+          value={dateTime} 
+          onChange={(e) => setDateTime(e.target.value)} 
+        />
+      </div>
+      <div className="input-container">
+        <FileInput onChange={handleFileChange} />
+      </div>
+      <div className="input-container">
+        <LogoffButton />
+      </div>
+      <div className="input-container">
+        <button className="posting-button" onClick={inviaMessaggio}>Send Post</button>
+      </div>
     </div>
-    </>
-  )
+  </>
+)
 }
 
 export default PostPage

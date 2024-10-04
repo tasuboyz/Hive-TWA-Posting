@@ -30,79 +30,48 @@ h1 {
 
 .container {
   display: flex;
-  /* flex-direction: column; */
-  justify-content: space-around;
-  /* align-items: flex-end; */
-  /* height: 100vh; */
-  /* width: 60vw; */
-  /* padding: 5px; */
-  /* box-sizing: border-box; */
-  overflow: hidden;
-  flex-wrap: wrap;
-  /* align-content: center; */
-  /* margin: 0 auto;  */
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
 }
 
-.input-description {
-  width: 400px;
-  height: 350px;
-  padding: 10px;
-  margin-bottom: 10px;
-  font-size: 16px;
+.input-container {
+  width: 100%;
+  margin-bottom: 15px;
 }
 
 .input-title,
-.input-description,
 .input-tag,
-.input-account,
-.input-password,
-.input-datetime,
-.button {
+.input-datetime {
   width: 100%;
   padding: 10px;
-  margin-bottom: 10px;
   font-size: 16px;
-  border: 1px solid #323238;
-  background-color: #202024;
-  color: #E1E1E6;
-  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
-.button,
-button {
-  background-color: #8257E5;
+.input-description {
+  height: 400px;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.posting-button {
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  background-color: #007bff;
   color: white;
-  padding: 16px 32px;
   border: none;
-  border-radius: 8px;
-  font-size: 1rem;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s;
 }
 
-.button:hover,
-button:hover {
-  background-color: #996DFF;
-}
-
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #323238;
-    background-color: #FAFAFA;
-  }
-
-  a:hover {
-    color: #8257E5;
-  }
-
-  button {
-    background-color: #E1E1E6;
-  }
+.posting-button:hover {
+  background-color: #0056b3;
 }
 
 .loading-overlay {
@@ -111,17 +80,16 @@ button:focus-visible {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background: rgba(255, 255, 255, 0.8);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  z-index: 1000;
+  justify-content: center;
 }
 
 .loading-spinner {
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid #3498db;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #007bff;
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -129,8 +97,9 @@ button:focus-visible {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .loading-overlay p {

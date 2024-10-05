@@ -189,7 +189,7 @@ const handleMouseUp = (event: React.MouseEvent) => {
 
 const handleSelectOption = (option: string) => {
   if (selectedText) { // Controlla che selectedText non sia null
-    let formattedText;
+    let formattedText: string;
     switch (option) {
       case "Bold":
         formattedText = `**${selectedText}**`;
@@ -215,6 +215,8 @@ const handleSelectOption = (option: string) => {
       case "Spoiler":
         formattedText = `>! [Hidden Spoiler Text] ${selectedText}\n> Optionally with more lines`;
         break;
+      case "Create link":
+        break;
       default:
         console.log(`Selected option: ${option} for text: ${selectedText}`);
         return;
@@ -236,10 +238,9 @@ return (
           <p>Loading...</p>
         </div>
       )}
-      <div className="input-container">
+      <div>
         <CommunityButton onClick={handleButtonClick} communityName={communityName || ''} />
       </div>
-      <div className="input-container">
         <input
           type="text"
           placeholder="Title"
@@ -247,8 +248,6 @@ return (
           value={titolo}
           onChange={(e) => setTitolo(e.target.value)}
         />
-      </div>
-      <div className="input-container">
         <textarea
           placeholder="body of post"
           className="input-description"
@@ -256,9 +255,8 @@ return (
           onChange={(e) => setDescription(e.target.value)}
           onMouseUp={handleMouseUp}
           maxLength={15000}
-          style={{ width: 'calc(100% - 20px)' }}
+          // style={{ width: 'calc(100% - 20px)' }}
         />
-      </div>
       {contextMenuVisible && (
         <ContextMenu
           options={['Bold', 'Italic', 'Underline', 'Quote', 'Script', 'Strikethrough', 'Table', 'Spoiler', 'Create link']}
@@ -266,7 +264,6 @@ return (
           position={contextMenuPosition}
         />
       )}
-      <div className="input-container">
         <input
           type="text"
           placeholder="Tag example: steem steemit steemexclusive"
@@ -279,24 +276,17 @@ return (
             }
           }}
         />
-      </div>
-      <div className="input-container">
         <input 
           type="datetime-local" 
           className="input-datetime" 
           value={dateTime} 
           onChange={(e) => setDateTime(e.target.value)} 
         />
-      </div>
-      <div className="input-container">
         <FileInput onChange={handleFileChange} />
-      </div>
-      <div className="input-container">
+      <div>
         <LogoffButton />
       </div>
-      <div className="input-container">
         <button className="posting-button" onClick={inviaMessaggio}>Send Post</button>
-      </div>
     </div>
   </>
 )

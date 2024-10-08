@@ -38,8 +38,7 @@ h1 {
 
 .input-container {
   width: 100%;
-  margin-bottom: 15px;
-  background-color: var(--background-color);
+  margin-bottom: 15px;  
 }
 
 .input-title,
@@ -60,6 +59,7 @@ h1 {
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  background-color: var(--background-color);
 }
 
 .posting-button {

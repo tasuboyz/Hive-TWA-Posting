@@ -237,7 +237,7 @@ return (
           <div className="loading-spinner"></div>
           <p>Loading...</p>
         </div>
-      )}
+      )}      
       <div>
         <CommunityButton onClick={handleButtonClick} communityName={communityName || ''} />
       </div>

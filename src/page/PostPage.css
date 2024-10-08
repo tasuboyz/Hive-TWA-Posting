@@ -1,9 +1,10 @@
 :root {
+  --primary-color: #007bff;
   font-family: 'Inter', sans-serif;
   line-height: 1.5;
   font-weight: 400;
   color-scheme: light dark;
-  color: #E1E1E6;
+  /* color: #E1E1E6; */
   background-color: #121214;
   font-synthesis: none;
   text-rendering: optimizeLegibility;

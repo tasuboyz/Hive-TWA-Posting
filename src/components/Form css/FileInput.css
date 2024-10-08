@@ -3,7 +3,8 @@
   display: flex;
   justify-content: center; /* Centrato orizzontalmente */
   align-items: center;
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 #dropZone {
@@ -18,7 +19,6 @@
   font-size: 1.2em;
   color: #1ed50adb;
   font-weight: 500;
-  margin-bottom: 15px;
   background-color: #121214;
 }
 

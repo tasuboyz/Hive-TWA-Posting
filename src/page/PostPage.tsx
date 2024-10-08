@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import './PostPage.css'
 import FileInput from '../components/FileInput';
 import { postAPI } from './api/postAPI';
-import LogoffButton from '../components/LogoffButton'
+//import LogoffButton from '../components/LogoffButton'
 import ContextMenu from '../components/ContextMenu';
 
 declare global {
@@ -237,7 +237,8 @@ return (
           <div className="loading-spinner"></div>
           <p>Loading...</p>
         </div>
-      )}      
+      )}
+      
       <div>
         <CommunityButton onClick={handleButtonClick} communityName={communityName || ''} />
       </div>
@@ -283,10 +284,28 @@ return (
           onChange={(e) => setDateTime(e.target.value)} 
         />
         <FileInput onChange={handleFileChange} />
-      <div>
+      {/* <div>
         <LogoffButton />
-      </div>
+      </div> */}
         <button className="posting-button" onClick={inviaMessaggio}>Send Post</button>
+        {/* <nav>
+          <button id="draftBtn">
+            <i className="material-icons">description</i>
+            <span>Bozze</span>
+          </button>
+          <button id="postBtn">
+            <i className="material-icons">edit</i>
+            <span>Pubblica</span>
+          </button>
+          <button id="accountBtn">
+            <i className="material-icons">account_circle</i>
+            <span>Account</span>
+          </button>
+          <button id="configBtn">
+            <i className="material-icons">settings</i>
+            <span>Configurazione</span>
+          </button>
+      </nav> */}
     </div>
   </>
 )

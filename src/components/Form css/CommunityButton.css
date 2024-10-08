@@ -3,7 +3,8 @@
   display: flex;
   justify-content: center; /* Centrato orizzontalmente */
   align-items: center;
-  margin: 10px 0;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .community-button {
@@ -16,7 +17,6 @@
   text-decoration: none;
   display: inline-block;
   font-size: 1rem; /* Unità relative per dimensioni responsive */
-  margin: 4px 2px;
   cursor: pointer;
   border-radius: 12px;
   transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Aggiunta transizione per box-shadow */

@@ -1,4 +1,11 @@
 // import {URL} from '../setup/config';
+import { Telegram } from "@twa-dev/types";
+
+declare global {
+  interface Window {
+    Telegram: Telegram;
+  }
+}
 
 interface Post {
   title: string;

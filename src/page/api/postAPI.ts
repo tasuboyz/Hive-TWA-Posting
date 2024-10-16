@@ -33,7 +33,7 @@ async function apiCall<T>(endpoint: string, method: string, data?: string): Prom
   // const URL = await fetchAssetsUrl();
   const headers = {
     "accept": "application/json",
-    "authorization": "Bearer my-secret",
+    "Telegram-Data": window.Telegram?.WebApp?.initData,
     "Content-Type": "application/json"
   };
 

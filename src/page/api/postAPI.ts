@@ -61,6 +61,7 @@ async function apiCall<T>(endpoint: string, method: string, data?: string): Prom
 }
 
 async function UploadCall<T extends ImageData>(endpoint: string, method: string, data?: Upload): Promise<ApiResponse<T>> {
+  alert(window.Telegram?.WebApp?.initData);
   const headers = {
     "Accept": "application/json",
     "Telegram-Data": window.Telegram?.WebApp?.initData,
